@@ -203,7 +203,7 @@ class SnippetRepository {
       const db = getDb();
       
       return db.transaction(() => {
-        const insertResult = this.insertSnippetStmt.run(title, description, userId, isPublic);
+        const insertResult = this.insertSnippetStmt.run(title, description, userId, isPublic?1:0);
         const snippetId = insertResult.lastInsertRowid;
         
         fragments.forEach((fragment, index) => {
